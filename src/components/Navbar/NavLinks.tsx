@@ -11,7 +11,7 @@ interface Navs {
 }
 
 const NavLinks = async () => {
-  const response = await fetch("https://api.abcz.workers.dev/api/bazardor/categories")
+  const response = await fetch("https://openapi.programming-hero.com/api/bazardor/categories")
   const data: Navs[] = await response.json();
 
   return (

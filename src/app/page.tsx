@@ -14,7 +14,7 @@ interface Product {
 } 
 
 export default async function Home () {
-    const response = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
+    const response = await fetch("https://openapi.programming-hero.com/api/bazardor/products")
     const data: Product[] = await response.json()
     const increasedProducts = data.filter((data) => data.change.dir === "up")
     const decreasedProducts = data.filter((data) => data.change.dir === "down")

@@ -1,10 +1,14 @@
 "use client";
+import { Person } from "@gravity-ui/icons";
 import { useState } from "react";
 import { Avatar, Button, Input } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+
 
 const ProfilePage = () => {
+    const router = useRouter();
     const { data: session } = authClient.useSession();
     const user = session?.user;
     const [name, setName] = useState("");
@@ -34,9 +38,9 @@ const ProfilePage = () => {
         }
     };
     const handleSignOut = async () => {
-        await authClient.signOut();
-        window.location.href = "/";
-    };
+        await authClient.signOut()
+        router.push("/")
+    }
 
     return (
         <main className="min-h-screen bg-[#F0F5F0] px-5 py-10">
@@ -45,12 +49,9 @@ const ProfilePage = () => {
                 <h1 className="text-2xl font-bold text-gray-800">আমার প্রোফাইল</h1>
                 <p className="mt-1 text-sm text-gray-500">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন।</p>
                 <div className="mt-6 flex flex-col items-start gap-4 rounded-2xl border border-gray-200 bg-white p-5 sm:flex-row sm:items-center">
-                    <Avatar className="h-16 w-16 rounded-lg">
-                        <Avatar.Image
-                            alt={user?.name || "User"}
-                            src="https://img.heroui.chat/image/avatar?w=400&h=400&u=4"/>
-                        <Avatar.Fallback className="rounded-lg">
-                            {user?.name?.slice(0, 2).toUpperCase() || "JD"}
+                    <Avatar>
+                        <Avatar.Fallback>
+                            <Person />
                         </Avatar.Fallback>
                     </Avatar>
 

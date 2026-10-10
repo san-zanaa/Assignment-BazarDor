@@ -30,7 +30,7 @@ interface Product {
 
 const ProductDetails = async ({ params }: {params: Promise<{ id: string }>}) => {
     const { id } = await params;
-    const response = await fetch("https://api.abcz.workers.dev/api/bazardor/products")
+    const response = await fetch("https://openapi.programming-hero.com/api/bazardor/products")
     const data: Product[] = await response.json();
 
     const product = data.find(

@@ -5,6 +5,7 @@ import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react"
 
+
 const UserInfo = () => {
     const { data: session } = authClient.useSession()
     const user = session?.user
