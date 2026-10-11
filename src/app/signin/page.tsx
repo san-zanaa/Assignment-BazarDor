@@ -32,7 +32,7 @@ function SignInPage() {
             toast.error(error.message || "Login failed!")
             return;
         }
-        toast.success("সফলভাবে সাইন ইন হয়েছে!")
+        toast.success("সফলভাবে সাইন ইন হয়েছে")
         router.push("/")
     }
 

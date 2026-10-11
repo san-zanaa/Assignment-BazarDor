@@ -7,6 +7,7 @@ interface Product {
     nameBn: string
     today: number
     unit: string
+    category: string
     change: {
         dir: string
         pct: number

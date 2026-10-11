@@ -15,7 +15,7 @@ const ProfilePage = () => {
     const [loading, setLoading] = useState(false);
     const handleUpdate = async () => {
         if (!name.trim()) {
-            alert("নাম লিখো");
+            toast.error("কোনো নাম লেখা হয়নি!");
             return;
         }
         setLoading(true);
@@ -32,7 +32,7 @@ const ProfilePage = () => {
             }
         } catch (error) {
             console.error("Update failed:", error);
-            toast.info("নাম আপডেট করতে সমস্যা হয়েছে");
+            toast.error("নাম আপডেট করতে সমস্যা হয়েছে");
         } finally {
             setLoading(false);
         }
@@ -61,7 +61,7 @@ const ProfilePage = () => {
                     </div>
 
                     <Button
-                        variant="bordered"
+                        variant="secondary"
                         className="border-red-400 text-red-500"
                         onPress={handleSignOut}>
                         ↩ সাইন আউট
@@ -76,15 +76,11 @@ const ProfilePage = () => {
                         <Input className="w-full"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            placeholder={user?.name || "আপনার নাম লিখুন"}
-                            variant="bordered"
-                            radius="lg" />
+                            placeholder={user?.name || "আপনার নাম লিখুন"}/>
                         <Button
                             className="mt-4 w-full bg-green-700 font-medium text-white rounded-md"
-                            onPress={handleUpdate}
-                            isLoading={loading}
-                            isDisabled={!name.trim()}>
-                            আপডেট
+                            onPress={handleUpdate}>
+                            {loading ? "আপডেট হচ্ছে..." : "আপডেট"}
                         </Button>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ function SignUpPage() {
             formData.get("confirmPassword")?.toString() ?? "";
 
         if (password !== confirmPassword) {
-            toast.error("দুটি পাসওয়ার্ড মিলছে না!");
+            toast.error("দুটি পাসওয়ার্ড মিলছে না !");
             return;
         }
         sessionStorage.setItem("signupEmail", user.email)
@@ -35,7 +35,7 @@ function SignUpPage() {
             toast.error(error.message || "Signup failed!")
             return;
         }
-        toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!")
+        toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে")
         router.push("/signin")
     }
 
