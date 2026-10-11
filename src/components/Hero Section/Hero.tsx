@@ -1,10 +1,17 @@
-
+"use client"
 import Image from 'next/image';
 import Link from 'next/link';
+
+
 const Hero = () => {
     const date = new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full"
-    })
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Dhaka",
+  });
+    
     return (
         <div className='w-[90%] mx-auto flex flex-col md:justify-around gap-5 bg-white border border-gray-100 rounded-xl mt-6 md:flex-row'>
             <div className='w-full md:w-1/2 p-4 md:py-10 md:px-10 flex flex-col items-center text-center md:items-start md:text-left mx-auto'>

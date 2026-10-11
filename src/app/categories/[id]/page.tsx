@@ -1,4 +1,3 @@
-import Cards from '@/components/Price Cards/Cards';
 import SortedProducts from '@/components/Price Cards/SortedProducts';
 
 
