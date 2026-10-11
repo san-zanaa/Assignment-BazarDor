@@ -4,9 +4,11 @@ import { Avatar } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
 import { useState } from "react"
+import { useRouter } from "next/navigation";
 
 
 const UserInfo = () => {
+    const router = useRouter()
     const { data: session } = authClient.useSession()
     const user = session?.user
     console.log(user);
@@ -14,6 +16,7 @@ const UserInfo = () => {
     const handleSignOut = async () => {
     setIsOpen(false);
     await authClient.signOut();
+    router.push("/")
 }
     const [isOpen, setIsOpen] = useState(false)
     return (

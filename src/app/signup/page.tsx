@@ -13,7 +13,7 @@ function SignUpPage() {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const user = Object.fromEntries(
-            formData.entries()) as { name: string; email: string; password: string}
+            formData.entries()) as { name: string; email: string; password: string }
         const password = formData.get("password")?.toString() ?? "";
         const confirmPassword =
             formData.get("confirmPassword")?.toString() ?? "";
@@ -37,6 +37,18 @@ function SignUpPage() {
         }
         toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!")
         router.push("/signin")
+    }
+
+    const handleGoogleSignUp = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+            callbackURL: "/",
+        })
+    }
+    const handleGithubSignUp = async () => {
+        const data = await authClient.signIn.social({
+            provider: "github"
+        })
     }
     return (
         <main className="min-h-screen bg-[#f0f5f0] px-4 py-10 flex items-center justify-center">
@@ -141,20 +153,18 @@ function SignUpPage() {
                     </div>
 
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                        <Button
+                        <Button onClick={handleGoogleSignUp}
                             type="button"
                             variant="secondary"
-                            className="w-full rounded-lg border border-[#dce6dd] bg-transparent px-2 py-2.5 text-sm text-[#26332b] hover:bg-gray-50"
-                            onPress={() => alert("Google OAuth setup করতে হবে।")}>
+                            className="w-full rounded-lg border border-[#dce6dd] bg-transparent px-2 py-2.5 text-sm text-[#26332b] hover:bg-gray-50">
                             <Image src={"/google-logo.png"} alt="github" width={20} height={20} />
                             Google দিয়ে চালিয়ে যান
                         </Button>
 
-                        <Button
+                        <Button onClick={handleGithubSignUp}
                             type="button"
                             variant="secondary"
-                            className="w-full rounded-lg border border-[#dce6dd] bg-transparent px-2 py-2.5 text-sm text-[#26332b] hover:bg-gray-50"
-                            onPress={() => alert("GitHub OAuth setup করতে হবে।")}>
+                            className="w-full rounded-lg border border-[#dce6dd] bg-transparent px-2 py-2.5 text-sm text-[#26332b] hover:bg-gray-50">
                             <Image src={"/github_logo.webp"} alt="github" width={20} height={20} />
                             GitHub দিয়ে চালিয়ে যান
                         </Button>
