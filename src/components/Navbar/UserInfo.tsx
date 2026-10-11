@@ -11,7 +11,6 @@ const UserInfo = () => {
     const router = useRouter()
     const { data: session } = authClient.useSession()
     const user = session?.user
-    console.log(user);
 
     const handleSignOut = async () => {
     setIsOpen(false);
@@ -37,6 +36,7 @@ const UserInfo = () => {
                                 <p className="mb-8 text-gray-500">{user?.email}</p>
 
                                 <Link href="/profile"
+                                    onClick={() => setIsOpen(false)}
                                     className="mb-6 block text-lg text-gray-800">
                                     👤 আমার প্রোফাইল
                                 </Link>
@@ -48,7 +48,7 @@ const UserInfo = () => {
                     </div>
                 ) : (
                     <div className='flex gap-2 px-20 text-sm'>
-                        <Link onClick={handleSignOut} href={"/signin"} className='cursor-pointer hover:bg-gray-200 py-1 px-3 rounded-md'>সাইন ইন</Link>
+                        <Link href={"/signin"} className='cursor-pointer hover:bg-gray-200 py-1 px-3 rounded-md'>সাইন ইন</Link>
                         <Link href={"/signup"} className=' bg-[#07883e] text-white py-1 px-3 rounded-md hover:bg-[#136f63] cursor-pointer'>সাইন আপ</Link>
                     </div>
                 )

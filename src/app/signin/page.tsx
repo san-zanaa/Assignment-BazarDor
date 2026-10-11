@@ -37,14 +37,14 @@ function SignInPage() {
     }
 
     const handleGoogleSignIn = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
             provider: "google",
             callbackURL: "/",
         })
     }
 
     const handleGithubSignIn = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
             provider: "github",
             callbackURL: "/"
         })

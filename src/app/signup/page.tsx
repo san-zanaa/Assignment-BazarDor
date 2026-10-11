@@ -7,6 +7,7 @@ import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
 
+
 function SignUpPage() {
     const router = useRouter();
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +30,6 @@ function SignUpPage() {
             email: user.email,
             password: user.password,
             callbackURL: "/signin",
-            autoSignIn: false,
         });
         if (error) {
             toast.error(error.message || "Signup failed!")
@@ -40,13 +40,13 @@ function SignUpPage() {
     }
 
     const handleGoogleSignUp = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
             provider: "google",
             callbackURL: "/",
         })
     }
     const handleGithubSignUp = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
             provider: "github"
         })
     }
