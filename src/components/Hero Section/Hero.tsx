@@ -1,21 +1,17 @@
-"use client"
+
 import Image from 'next/image';
 import Link from 'next/link';
+import DateDisplay from '../Navbar/DateDisplay';
 
 
 const Hero = () => {
-    const date = new Date().toLocaleDateString("bn-BD", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    timeZone: "Asia/Dhaka",
-  });
     
     return (
         <div className='w-[90%] mx-auto flex flex-col md:justify-around gap-5 bg-white border border-gray-100 rounded-xl mt-6 md:flex-row'>
             <div className='w-full md:w-1/2 p-4 md:py-10 md:px-10 flex flex-col items-center text-center md:items-start md:text-left mx-auto'>
-                <h6 className='bg-green-100 text-green-600 w-fit rounded-xl py-1 px-3 mb-2 font-bold'>{date}</h6>
+                <h6 className='bg-green-100 text-green-600 w-fit rounded-xl py-1 px-3 mb-2 font-bold'>
+                    <DateDisplay />
+                </h6>
                 <h1 className='text-3xl font-bold'>আজকের বাজারের দাম এক নজরে</h1>
                 <p className='text-gray-500 mt-2'>চাল, ডাল, তেল, সবজি, মাছ, মাংস, ডিম ও মসলার দাম — বাজারভিত্তিক বিস্তারিত, গড়, সর্বনিম্ন-সর্বাধিক এবং দামের পরিবর্তন এক জায়গায়।</p>
 
